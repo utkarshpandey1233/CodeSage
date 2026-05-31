@@ -5,7 +5,7 @@ import ChatBox from './components/ChatBox';
 import MockInterview from './components/MockInterview';
 import './App.css'; // Optional if anything remains here, mostly index.css handles it.
 
-const API_BASE = 'http://127.0.0.1:8000/api';
+const API_BASE = 'https://codesage-backend-cspt.onrender.com/api';
 
 function App() {
   const [jd, setJd] = useState('');
