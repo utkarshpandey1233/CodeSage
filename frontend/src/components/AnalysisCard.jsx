@@ -67,7 +67,7 @@ function AnalysisCard({ analysisRaw, jdText, resumeText }) {
 
   // Why this score logic
   const reasons = [];
-  if (parsed.missingSkills.length > 0) reasons.push(`Missing key skills: ${parsed.missingSkills[0]}`);
+  if (parsed.missingSkills.length > 0) reasons.push(`Missing key skills : ${parsed.missingSkills[0]}`);
   if (parsed.improvements.length > 0) reasons.push(`Opportunity: ${parsed.improvements[0]}`);
 
   return (

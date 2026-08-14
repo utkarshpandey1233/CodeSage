@@ -46,7 +46,7 @@ class AnalyzeRequest(BaseModel):
     jd_text: str
 
 # ================= GROQ CALL =================
-def get_groq_response(messages, model="llama-3.1-8b-instant"):
+def get_groq_response(messages, model="openai/gpt-oss-20b"):
     try:
         res = client.chat.completions.create(
             messages=messages,
@@ -180,7 +180,7 @@ Rules:
         {"role": "system", "content": system_prompt}
     ]
 
-    # 🔥 ADD CONTEXT (RESUME + JD)
+    #  ADD CONTEXT (RESUME + JD)
     if request.resume_text and request.jd_text:
         messages.append({
             "role": "system",
@@ -193,14 +193,14 @@ Job Description (short):
 """
         })
 
-    # 🔥 ADD CHAT HISTORY
+    # ADD CHAT HISTORY
     for msg in request.chat_history:
         messages.append({
             "role": msg.role,
             "content": msg.content
         })
 
-    # 🔥 CURRENT QUESTION
+    #  CURRENT QUESTION
     messages.append({
         "role": "user",
         "content": request.message

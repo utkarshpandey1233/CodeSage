@@ -1,0 +1,20 @@
+{
+  "name": "codesage---ai-resume-analyzer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/utkarshpandey1233/CodeSage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/utkarshpandey1233/CodeSage/issues"
+  },
+  "homepage": "https://github.com/utkarshpandey1233/CodeSage#readme"
+}
