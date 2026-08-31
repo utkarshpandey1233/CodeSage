@@ -12,18 +12,18 @@ function MockInterview({ resumeText, jdText }) {
     setIsGeneratingQuestion(true);
     try {
       const payload = {
-        message: "You are an expert technical recruiter. Based on the provided resume and job description context, generate ONE unique, specific mock interview question. Do not include any intro, outro, or explanations. Just return the exact question.",
+        message: "You are an expert technical recruiter. Based on the provided resume and job description context, generate ONE specific mock interview question for fresher level. Do not include any intro, outro, or explanations. Just return the exact question.",
         resume_text: resumeText || null,
         jd_text: jdText || null,
         chat_history: []
       };
-      
+
       const res = await fetch('https://codesage-backend-cspt.onrender.com/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      
+
       const data = await res.json();
       setQuestion(data.reply);
     } catch (err) {
@@ -50,7 +50,7 @@ function MockInterview({ resumeText, jdText }) {
   const submitAnswer = async () => {
     if (!answer.trim()) return;
     setIsEvaluating(true);
-    
+
     try {
       const payload = {
         message: `You are an interview evaluator. If the answer is weak, incomplete, or irrelevant: - point out clearly. If good: - give strengths. Always be honest and critical.\n\nEvaluate this answer:\n"${answer}"\n\nTo this question:\n"${question}"`,
@@ -58,13 +58,13 @@ function MockInterview({ resumeText, jdText }) {
         jd_text: jdText || null,
         chat_history: []
       };
-      
+
       const res = await fetch('https://codesage-backend-cspt.onrender.com/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      
+
       const data = await res.json();
       setFeedback(data.reply);
     } catch (err) {
@@ -87,8 +87,8 @@ function MockInterview({ resumeText, jdText }) {
           <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
             We'll dynamically generate questions based on your resume and the job description, and give you immediate feedback.
           </p>
-          <button 
-            className="btn-primary" 
+          <button
+            className="btn-primary"
             onClick={startInterview}
             disabled={!resumeText || !jdText}
             style={{ margin: '0 auto' }}
@@ -141,8 +141,8 @@ function MockInterview({ resumeText, jdText }) {
       </div>
 
       {!feedback ? (
-        <button 
-          className="btn-primary" 
+        <button
+          className="btn-primary"
           onClick={submitAnswer}
           disabled={!answer.trim() || isEvaluating || isGeneratingQuestion}
           style={{ alignSelf: 'flex-start' }}
